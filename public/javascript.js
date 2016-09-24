@@ -5,8 +5,6 @@ $(document).ready(function(){
             url: "/result",
             data: $("#flightform").serialize(),
             success: function(result){
-                alert(result)
-
                 $('#result-panel').html(result)
             }
         })
