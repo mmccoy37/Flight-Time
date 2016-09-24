@@ -49,7 +49,7 @@
 <body>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="max-width: 600px">
 
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -73,25 +73,29 @@
           <div class="panel-body">
             <div id="flight-info">
                 <div class="form-group row">
-                  <label for="flightinfo" class="col-xs-2 col-form-label">Flight #</label>
-                  <div class="col-xs-10">
-                    <input class="form-control" type="text" value="AFhwi9824yhd82" name="flightinfo">
+                  <div class="col-xs-6">
+                    <label for="flightnum" class="col-form-label">Flight Identification Number</label>
+                    <input class="form-control" type="text" value="1986" name="flightnum">
+                  </div>
+                  <div class="col-xs-6">
+                    <label for="flightdate" class="col-form-label">Date of Origin Flight</label>
+                    <input class="form-control" type="text" value="2016-09-09" name="flightdate">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="airportid" class="col-xs-2 col-form-label">Airport ID</label>
-                  <div class="col-xs-10">
+<!--                 <div class="form-group row">
+                  <div class="col-xs-6">
+                    <label for="airportid" class="col-form-label">Airport ID</label>
                     <select class="form-control" name="airport">
                       <option>ATL</option>
                       <option>SEA</option>
                       <option>ORL</option>
                     </select>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
-                  <label for="loc-end-id" class="col-xs-2 col-form-label">My Location</label>
-                  <div class="col-xs-10">
-                    <input class="form-control" type="location" value="Hartsfield-Jackson Airport" id="loc-end-id">
+                  <div class="col-xs-6">
+                    <label for="loc-end-id" class="col-xs-6 col-form-label">My Location</label>
+                    <input class="form-control" type="location" value="Georgia Tech" id="loc-end-id">
                   </div>
                 </div>
             </div>
