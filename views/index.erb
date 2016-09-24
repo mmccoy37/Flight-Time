@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bare - Start Bootstrap Template</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- javascript ajax call on submit -->
+    <script type="text/javascript" src="javascript.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>A Bootstrap Starter Template</h1>
+                <p class="lead">Complete with pre-defined file paths that you won't have to change!!</p>
+                <ul class="list-unstyled">
+                    <li>Bootstrap v3.3.7</li>
+                    <li>jQuery v1.11.1</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Find your estimated waiting </h3>
+          </div>
+          <form action="/result" method="POST" name="flightform">
+          <div class="panel-body">
+            Panel content
+            <%=name%>
+            <div id="flight-info">
+                <div class="form-group row">
+                  <label for="flightinfo" class="col-xs-2 col-form-label">Flight</label>
+                  <div class="col-xs-10">
+                    <input class="form-control" type="text" value="Artisanal kale" name="flightinfo">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="loc-start-id" class="col-xs-2 col-form-label">Location</label>
+                  <div class="col-xs-10">
+                    <input class="form-control" type="location" value="Georgia Tech" id="loc-start-id">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="loc-end-id" class="col-xs-2 col-form-label">Destination</label>
+                  <div class="col-xs-10">
+                    <input class="form-control" type="location" value="Hartsfield-Jackson Airport" id="loc-end-id">
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="panel-footer" style="alight">
+              <button type="button" name="submit" id="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
+        </div>
+
+
+
+        <div id="result-panel">
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
