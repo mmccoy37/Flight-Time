@@ -13,9 +13,6 @@
 
      <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 
-     <!-- jquery ui -->
-     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Bootstrap Core CSS -->
     <!-- Latest compiled and minified CSS -->
@@ -33,6 +30,11 @@
     body {
         padding-top: 70px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+
+    #ex1Slider .slider-selection {
+    background: #BABABA;
+    
     }
 
     </style>
@@ -89,10 +91,21 @@
             </div>
             <div class="panel-body">
                 <p> Optimal Trip Time </p>
+
+                <!-- Slider -->
+                <div class="slider slider-horizontal" id="optTimeSlider">
+
+                </div>
+
                 <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                 <script>
-                    $(document.ready(function() {
-                        $("ex1").slider();
+                    // With JQuery
+                    $document.ready(function() {
+                        $('#ex1').slider({
+                            formatter: function(value) {
+                                return 'Current value: ' + value;
+                            }
+                        });
                     });
                 </script>
             </div>
