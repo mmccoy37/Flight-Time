@@ -6,6 +6,7 @@ $(document).ready(function(){
             data: $("#flightform").serialize(),
             success: function(result){
                 alert(result)
+
                 $('#result-panel').html(result)
             }
         })
