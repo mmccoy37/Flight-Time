@@ -71,23 +71,25 @@
           </div>
           <form action="/result" method="POST" id="flightform">
           <div class="panel-body">
-            Panel content
-            <%=name%>
             <div id="flight-info">
                 <div class="form-group row">
-                  <label for="flightinfo" class="col-xs-2 col-form-label">Flight</label>
+                  <label for="flightinfo" class="col-xs-2 col-form-label">Flight #</label>
                   <div class="col-xs-10">
-                    <input class="form-control" type="text" value="Artisanal kale" name="flightinfo">
+                    <input class="form-control" type="text" value="AFhwi9824yhd82" name="flightinfo">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="loc-start-id" class="col-xs-2 col-form-label">Location</label>
+                  <label for="airportid" class="col-xs-2 col-form-label">Airport ID</label>
                   <div class="col-xs-10">
-                    <input class="form-control" type="location" value="Georgia Tech" id="loc-start-id">
+                    <select class="form-control" name="airport">
+                      <option>ATL</option>
+                      <option>SEA</option>
+                      <option>ORL</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="loc-end-id" class="col-xs-2 col-form-label">Destination</label>
+                  <label for="loc-end-id" class="col-xs-2 col-form-label">My Location</label>
                   <div class="col-xs-10">
                     <input class="form-control" type="location" value="Hartsfield-Jackson Airport" id="loc-end-id">
                   </div>
