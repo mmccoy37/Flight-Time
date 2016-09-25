@@ -6,6 +6,32 @@ $(document).ready(function(){
     var flightnum = document.getElementById("flightnum").value;
     var flightdate = document.getElementById("flightdate").value;
     var duration;
+    var pos;
+
+    $("#gpsBtn").click(function(){
+      navigator.geolocation.getCurrentPosition(function(position) {
+             pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            origin1 = pos;
+            console.log(pos);
+
+            var geocoder = new google.maps.Geocoder;
+            console.log(pos);
+            var myLocal = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            geocoder.geocode({'location': myLocal}, function(results, status) {
+              if (status === 'OK') {
+                var address = results[0];
+                console.log(address.formatted_address);
+                $("#loc-end-id").val(address.formatted_address);
+              } else {
+                console("We were not able to parse this into a real address");
+              }
+            });
+          });
+
+    });
 
     $("#submit").click(function(){
         $('#result-panel').html("")
