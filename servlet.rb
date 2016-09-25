@@ -2,7 +2,7 @@
 # @Author: matt
 # @Date:   2016-09-24 11:15:35
 # @Last Modified by:   Matt
-# @Last Modified time: 2016-09-24 19:00:01
+# @Last Modified time: 2016-09-24 19:04:39
 require 'sinatra/base'
 require 'net/http'
 require 'json'
@@ -23,9 +23,7 @@ class FlightServlet < Sinatra::Base
         uri = URI(@API_FLIGHT_URL)
         response = Net::HTTP.get(uri)
         json = JSON.parse(response)
-        # used for wait time lookup
         @departCode = json["flightStatusResponse"]["statusResponse"]["flightStatusTO"]["flightStatusLegTOList"]["departureAirportCode"]
-        # used for google maps
         @departCity = json["flightStatusResponse"]["statusResponse"]["flightStatusTO"]["flightStatusLegTOList"]["departureCityName"]
 
         # FLIGHT WAITLIST INFO
@@ -34,6 +32,8 @@ class FlightServlet < Sinatra::Base
         response = Net::HTTP.get(uri)
         json = JSON.parse(response)
         @data = json["WaitTimeResult"][0]["waitTime"]
+
+        # we want number, not string
         case @data
         when "1-10 min"
             @data = 10
@@ -55,7 +55,6 @@ class FlightServlet < Sinatra::Base
         #setup and return result erb
         erb :result
     end
-
     # start if launching file
     run! if app_file == $0
 end

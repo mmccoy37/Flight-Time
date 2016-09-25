@@ -62,42 +62,35 @@
         </div>
         <!-- /.row -->
 
-
-
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Find your estimated waiting </h3>
           </div>
+
           <form action="/result" method="POST" id="flightform">
+
           <div class="panel-body">
-            <div id="flight-info">
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <label for="flightnum" class="col-form-label">Flight Identification Number</label>
-                    <input class="form-control" type="text" value="1986" name="flightnum">
-                  </div>
-                  <div class="col-xs-6">
-                    <label for="flightdate" class="col-form-label">Date of Origin Flight</label>
-                    <input class="form-control" type="text" value="2016-09-09" name="flightdate">
-                  </div>
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="flightnum" class="col-form-label">Flight Identification Number</label>
+                  <input class="form-control" type="text" value="1986" name="flightnum">
                 </div>
-<!--                 <div class="form-group row">
-                  <div class="col-xs-6">
-                    <label for="airportid" class="col-form-label">Airport ID</label>
-                    <select class="form-control" name="airport">
-                      <option>ATL</option>
-                      <option>SEA</option>
-                      <option>ORL</option>
-                    </select>
-                  </div>
-                </div> -->
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <label for="loc-end-id" class="col-xs-6 col-form-label">My Location</label>
-                    <input class="form-control" type="location" value="Georgia Tech" id="loc-end-id">
-                  </div>
+                <div class="col-xs-6">
+                  <label for="flightdate" class="col-form-label">Date of Origin Flight</label>
+                  <input class="form-control" type="text" value="2016-09-09" name="flightdate">
                 </div>
-            </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="loc-end-id" class="col-xs-6 col-form-label">My Location</label>
+                  <input class="form-control" type="location" value="Georgia Tech" id="loc-end-id">
+                </div>
+                <div class="col-xs-6">
+                  <button type="button" class="btn btn-default btn-md"  style="margin-top:20px;">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Current Location
+                  </button>
+                </div>
+              </div>
           </div>
           <div class="panel-footer" style="alight">
               <button type="button" name="submit" id="submit" class="btn btn-primary">Submit</button>
