@@ -4,3 +4,24 @@
 * @Last Modified by:   matt
 * @Last Modified time: 2016-09-24 21:56:15
 */
+.suggestHead{
+    font-size: 1.4em;
+    margin: 35px 0;
+    border-radius: 1.5%;
+    padding: 15px;
+}
+
+.timeText {
+  color: #2F71A9;
+  display: inline-block;
+}
+
+.dataRow {
+  margin: 30px;
+  padding-left: 7%;
+}
+
+.dataRow img, p {
+  display: inline-block;
+  margin: 0 10px;
+}

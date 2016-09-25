@@ -40,7 +40,8 @@ class FlightServlet < Sinatra::Base
         response = Net::HTTP.get(URI(tsaurl))
         json = JSON.parse(response)
         @delayTSA = json["WaitTimeResult"][0]["waitTime"].to_i
-        @delayTravel = params[:mapdelay][:duration][:value].to_i
+        @delayTravel = (params[:mapdelay][:duration][:value].to_i)
+        @delayTravel = @delayTravel / 60
         bufferTime = 30.0
         @departTime = @departTime.getlocal
         @currTime = (Time.now).localtime
