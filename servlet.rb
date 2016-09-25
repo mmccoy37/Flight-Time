@@ -2,7 +2,7 @@
 # @Author: matt
 # @Date:   2016-09-24 11:15:35
 # @Last Modified by:   Matt
-# @Last Modified time: 2016-09-24 20:24:15
+# @Last Modified time: 2016-09-24 22:37:57
 require 'sinatra/base'
 require 'net/http'
 require 'json'
@@ -31,26 +31,26 @@ class FlightServlet < Sinatra::Base
         uri = URI(@API_WAITLIST_URL)
         response = Net::HTTP.get(uri)
         json = JSON.parse(response)
-        @data = json["WaitTimeResult"][0]["waitTime"]
+        @delayTSA = json["WaitTimeResult"][0]["waitTime"]
 
         # we want number, not string
-        case @data
+        case @delayTSA
         when "1-10 min"
-            @data = 10
+            @delayTSA = 10
         when "11-20 min"
-            @data = 20
+            @delayTSA = 20
         when "21-30 min"
-            @data = 30
+            @delayTSA = 30
         when "31-45 min"
-            @data = 45
+            @delayTSA = 45
         when "46-60 min"
-            @data = 60
+            @delayTSA = 60
         when "61-90 min"
-            @data = 90
+            @delayTSA = 90
         when "91-120 min"
-            @data = 120
+            @delayTSA = 120
         else
-            @data = 150
+            @delayTSA = 150
         end
         #setup and return result erb
         erb :result
