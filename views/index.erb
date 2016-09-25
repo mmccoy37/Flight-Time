@@ -17,6 +17,8 @@
     <!-- javascript ajax call on submit -->
     <script type="text/javascript" src="javascript.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <!-- Bootstrap Core CSS -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -91,11 +93,11 @@
               <!-- Location -->
               <div class="form-group row">
                 <div class="col-xs-6">
-                  <label for="loc-end-id" class="col-xs-6 col-form-label">My Location</label>
+                  <label for="loc-end-id" class="col-form-label">My Location</label>
                   <input class="form-control" type="location" value="Georgia Tech" id="loc-end-id">
                 </div>
                 <div class="col-xs-6">
-                  <button type="button" class="btn btn-default btn-md"  style="margin-top:20px;">
+                  <button type="button" class="btn btn-default btn-md"  style="margin-top:25px;">
                     <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Current Location
                   </button>
                 </div>
@@ -104,14 +106,19 @@
 
           <!-- Submit -->
           <div class="panel-footer" style="alight">
-              <button type="button" name="submit" id="submit" class="btn btn-primary">Submit</button>
+              <button type="button" name="submit" id="submit" class="btn btn-primary">
+                Submit
+              </button>
           </div>
           </form>
         </div>
 
-        <div id="result-panel">
-        </div>
+        <div id="result-panel"></div>
 
+        <div id="spinner-div" style="visibility:hidden;">
+          <img src="/img/spinner.gif" id="spinner" align="middle"
+          style="width:40px;heigh40px;display:block;margin:0 auto;margin-top:40px;">
+        </div>
 
         <!-- Second Panel --> <!--Trip Outlook -->
         <div class="panel panel-primary">
@@ -119,7 +126,6 @@
             <h3 class="panel-title">Trip Outlook</h3>
           </div>
           <div class="panel-body">
-
             <form>
               <!-- Time -->
             <div class="form-group row">
@@ -133,14 +139,9 @@
             <button type="button" name="decTime" id="decTime" class="btn btn-primary">-</button>
             </div>
             </form>
-            
-
           </div>
-
-          
         </div>
 
-    </div>
 
 <!-- Icon credit -->
 <a href="http://www.freepik.com/free-vector/airplane-silhouette_810230.htm">Icon image designed by Freepik</a>
