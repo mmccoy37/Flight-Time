@@ -41,12 +41,12 @@ class FlightServlet < Sinatra::Base
         json = JSON.parse(response)
         @delayTSA = json["WaitTimeResult"][0]["waitTime"].to_i
         @delayTravel = (params[:mapdelay][:duration][:value].to_i)
-        @delayTravel = @delayTravel / 60
         bufferTime = 30.0
         @departTime = @departTime.getlocal
         @currTime = (Time.now).localtime
         @leaveAt = @departTime - (bufferTime * 60.0 + @delayTravel + @delayTSA)
         #formatting time
+        @delayTravel = @delayTravel / 60
         @leaveAt = @leaveAt.strftime("%I:%M %p")
         @departTime = @departTime.strftime("%I:%M %p")
         @currTime = @currTime.strftime("%I:%M %p")
