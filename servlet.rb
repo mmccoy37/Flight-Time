@@ -2,7 +2,7 @@
 # @Author: matt
 # @Date:   2016-09-24 11:15:35
 # @Last Modified by:   Matt
-# @Last Modified time: 2016-09-25 01:31:23
+# @Last Modified time: 2016-09-25 04:48:06
 require 'sinatra/base'
 require 'net/http'
 require 'json'
@@ -40,12 +40,15 @@ class FlightServlet < Sinatra::Base
         response = Net::HTTP.get(URI(tsaurl))
         json = JSON.parse(response)
         @delayTSA = json["WaitTimeResult"][0]["waitTime"].to_i
-        @delayTravel = params[:mapdelay][:duration][:value].to_i / 60
-        bufferTime = 30
+        @delayTravel = params[:mapdelay][:duration][:value].to_i
+        bufferTime = 30.0
         @departTime = @departTime.getlocal
-        @currTime = (Time.new).getlocal
-        @leaveAt = @departTime + bufferTime + @delayTravel + @delayTSA
+        @currTime = (Time.now).localtime
+        @leaveAt = @departTime - (bufferTime * 60.0 + @delayTravel + @delayTSA)
+        #formatting time
         @leaveAt = @leaveAt.strftime("%I:%M %p")
+        @departTime = @departTime.strftime("%I:%M %p")
+        @currTime = @currTime.strftime("%I:%M %p")
         # .strftime("%I:%M %p")
         #setup and return result erb
         erb :result
