@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-    var origin1 = $("#loc-end-id").val();
+    var userlocation;
     var destinationA = '6000 N Terminal Pkwy, Atlanta, GA 30320';
     // var formdata = $("#flightform").serialize();
-    var flightnum = document.getElementById("flightnum").value;
-    var flightdate = document.getElementById("flightdate").value;
+    var flightnum;
+    var flightdate;
     var duration;
     var pos;
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            origin1 = pos;
+            userlocation = pos;
             console.log(pos);
 
             var geocoder = new google.maps.Geocoder;
@@ -34,6 +34,21 @@ $(document).ready(function(){
     });
 
     $("#submit").click(function(){
+        flightdate = document.getElementById("flightdate").value;
+        flightnum = document.getElementById("flightnum").value;
+        userlocation = $("#loc-end-id").val()
+        var service = new google.maps.DistanceMatrixService;
+
+        if (flightnum == "") {
+            $("#container-warning").html('<div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error:</strong> please enter a flight number.</div>')
+            return;
+        } else if (flightdate == "") {
+            $("#container-warning").html('<div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error:</strong> please enter a date.</div>')
+            return;
+        } else if (userlocation == null || userlocation == "") {
+            $("#container-warning").html('<div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error:</strong> please enter a location.</div>')
+            return;
+        }
         $('#result-panel').html("")
         document.getElementById("spinner-div").style.visibility = "visible";
         // AJAX CALL TO GET LATLNG FOR GOOGLE MAPS CALCULATION
@@ -46,11 +61,10 @@ $(document).ready(function(){
             },
             success: function(result){
                 var destinationB = new google.maps.LatLng(result.lat, result.long);
-                var destinationC = new google.maps.LatLng(50.087692, 14.421150);
                 // start google maps stuff
-                var service = new google.maps.DistanceMatrixService;
+                // var service = new google.maps.DistanceMatrixService;
                 service.getDistanceMatrix({
-                    origins: [origin1],
+                    origins: [userlocation],
                     destinations: [destinationB],
                     travelMode: 'DRIVING',
                     avoidHighways: false,
@@ -70,6 +84,7 @@ $(document).ready(function(){
                                 mapdelay: duration
                             },
                             success: function(result){
+                                $("#container-warning").html("")
                                 document.getElementById("spinner-div").style.visibility = "hidden";
                                 $('#result-panel').html(result)
                             }
@@ -78,6 +93,10 @@ $(document).ready(function(){
                         alert("Error: " + status);
                     }
                 });
+            },
+            error: function(response){
+                document.getElementById("spinner-div").style.visibility = "hidden";
+                $("#container-warning").html('<div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error:</strong> flight does not exist for that date. </div>')
             }
         })
     })
